@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        textarea {
+            width: 90%;
+            height: 100px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .barcode-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .barcode-item {
+            width: 80%;
+            padding: 10px 0;
+            text-align: center;
+            background-color: white;
+            border-radius: 5px;
+        }
+        .barcode-item .product-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .barcode-item svg {
+            display: block;
+            margin: auto;
+        }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .barcode-container, .barcode-container * {
+                visibility: visible;
+            }
+            .barcode-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .barcode-item {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Barcode Generator</h1>
+    <textarea id="inputData" placeholder="Paste Excel data here (e.g., Product Name 123456789012)"></textarea>
+    <br>
+    <button onclick="generateBarcodes()">Generate Barcodes</button>
+    <button onclick="window.print()">Print</button>
+    <div class="barcode-container" id="barcodeContainer"></div>
+
+    <script src="index.js"></script>   
+</body>
+</html>

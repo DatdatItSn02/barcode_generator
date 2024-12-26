@@ -17,7 +17,7 @@ function generateBarcodes() {
         console.log(`Processing: ${name} - ${upc}`); // Log the product name and UPC
 
         if (upc.length !== 12 || isNaN(upc)) {
-            alert(`"${upc}" is not a valid UPC-A code. It must be exactly 12 digits and numeric.`);
+            alert(`"${upc}" mã UPC-A không hợp lệ. Mã UPC gồm 12 ký tự số và theo cấu trúc nhất định.`);
             return;
         }
 
@@ -36,7 +36,7 @@ function generateBarcodes() {
             barcodeContainer.appendChild(barcodeItem);
         } catch (error) {
             console.error(`Error generating barcode for ${upc}:`, error);
-            alert(`Error generating barcode for ${upc}. Please check the UPC code.`);
+            alert(`Lỗi tạo UPC: ${upc}. Mã UPC không hợp lệ.`);
         }
     });
 }
